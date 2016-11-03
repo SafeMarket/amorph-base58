@@ -1,6 +1,6 @@
 {
   "name": "amorph-base58",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Amorph converters for base58, array, and uint8array",
   "main": "index.js",
   "directories": {
