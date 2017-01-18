@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/SafeMarket/amorph-base58#readme",
   "dependencies": {
+    "array-equal": "^1.0.0",
     "nobject": "0.0.3"
   },
   "devDependencies": {
