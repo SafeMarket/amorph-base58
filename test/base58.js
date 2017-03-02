@@ -7,7 +7,7 @@ const Nobject = require('nobject')
 chai.should()
 
 //examples from https://www.npmjs.com/package/bs58
-const array = [0,60,23,110,101,155,234,15,41,163,233,191,120,128,193,18,177,179,27,77,200,38,38,129,135]
+const buffer = Buffer.from([0,60,23,110,101,155,234,15,41,163,233,191,120,128,193,18,177,179,27,77,200,38,38,129,135])
 const base58 = '16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS'
 
 describe('converters', () => {
@@ -16,27 +16,18 @@ describe('converters', () => {
     expect(converters).to.be.instanceOf(Nobject)
   })
 
-  describe('base58-array', () => {
+  describe('base58-buffer', () => {
     it('test 1', () => {
-      const uint8array = converters.get('base58', 'array')(base58)
-      expect(uint8array).to.be.instanceOf(Array)
-      expect(uint8array).to.deep.equal(array)
+      const _buffer = converters.get('base58', 'buffer')(base58)
+      expect(Buffer.compare(buffer, _buffer)).to.equal(0)
     })
   })
 
-  describe('array-uint8Array', () => {
+  describe('buffer-base58', () => {
     it('test 1', () => {
-      const uint8array = converters.get('array', 'uint8Array')(array)
-      expect(uint8array).to.be.instanceOf(Uint8Array)
-      expect(uint8array).to.deep.equal(new Uint8Array(array))
-    })
-  })
-
-  describe('uint8array-base58', () => {
-    it('test 1', () => {
-      const hex = converters.get('uint8Array', 'base58')(array)
-      expect(hex).to.be.a.string
-      expect(hex).to.equal(base58)
+      const _base58 = converters.get('buffer', 'base58')(buffer)
+      expect(_base58).to.be.a.string
+      expect(_base58).to.equal(base58)
     })
   })
 
